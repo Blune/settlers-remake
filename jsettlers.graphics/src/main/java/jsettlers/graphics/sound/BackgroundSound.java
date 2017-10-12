@@ -165,6 +165,7 @@ public class BackgroundSound implements Runnable {
 	 */
 	public void start() {
 		Thread thread = new Thread(this, "background-sound");
+		stopped = false;
 		thread.start();
 	}
 
@@ -175,6 +176,18 @@ public class BackgroundSound implements Runnable {
 		synchronized (waitMutex) {
 			stopped = true;
 			waitMutex.notifyAll();
+		}
+	}
+
+	/**
+	 * Pauses the sound player.
+	 */
+	public void pause(){
+		if (stopped){
+			start();
+		}
+		else{
+			stop();
 		}
 	}
 }

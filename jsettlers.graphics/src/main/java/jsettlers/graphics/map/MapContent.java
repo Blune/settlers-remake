@@ -888,6 +888,9 @@ public final class MapContent implements RegionContent, IMapInterfaceListener, A
 				setZoom(context.getScreen().getZoom() * 2, null);
 			}
 			break;
+		case SPEED_TOGGLE_PAUSE:
+				backgroundSound.pause();
+			break;
 		case ZOOM_OUT:
 			if (context.getScreen().getZoom() > 0.6) {
 				setZoom(context.getScreen().getZoom() / 2, null);

@@ -69,6 +69,9 @@ public class BackgroundSound implements Runnable {
 				if (stopped) {
 					break;
 				}
+				if (paused){
+					continue;
+				}
 				MapRectangle screen = map.getScreenArea();
 				if (screen == null) {
 					continue;
@@ -180,14 +183,11 @@ public class BackgroundSound implements Runnable {
 	}
 
 	/**
-	 * Pauses the sound player.
+	 * Pauses and resumes the sound player.
 	 */
-	public void pause(){
-		if (stopped){
-			start();
-		}
-		else{
-			stop();
-		}
+
+	private boolean paused = false;
+	public void tooglePause() {
+		paused = !paused;
 	}
 }
